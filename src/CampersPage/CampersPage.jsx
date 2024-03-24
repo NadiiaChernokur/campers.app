@@ -10,14 +10,14 @@ const CampersPage = () => {
   const [page, setPage] = useState(1);
   const [isArray, setIsArray] = useState(false);
   const [buttonDisable, setbuttonDisable] = useState(false);
-  const totalArrey = useSelector((state) => state.totalCampers);
-  const campersArrey = useSelector((state) => state.campersArray);
+  const totalArrey = useSelector(state => state.totalCampers);
+  const campersArrey = useSelector(state => state.campersArray);
 
   const LoadMore = () => {
     if (campersArrey.length + 4 >= totalArrey.length) {
       setbuttonDisable(true);
     }
-    setPage((prev) => prev + 1);
+    setPage(prev => prev + 1);
     dispatch(getCampers(page));
   };
 
@@ -27,12 +27,15 @@ const CampersPage = () => {
       setIsArray(true);
       return;
     }
+    if (page > 1) {
+      return;
+    }
 
-    setPage((prev) => prev + 1);
+    setPage(prev => prev + 1);
     dispatch(getCampers(page));
     dispatch(totalCampers());
     return;
-  }, [dispatch, isArray]);
+  }, [dispatch, isArray, page]);
 
   return (
     <>

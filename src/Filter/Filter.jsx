@@ -25,9 +25,8 @@ export const Filter = () => {
   const [vanChecked, setVan] = useState(false);
   const [fullyChecked, setFully] = useState(false);
   const [alcoveChecked, setAlcove] = useState(false);
-  const [filterArray, setFilterArray] = useState([]);
-  const campersArrey = useSelector((state) => state.campersArray);
-  const totalArrey = useSelector((state) => state.totalCampers);
+
+  const totalArrey = useSelector(state => state.totalCampers);
   const [filteredData, setFilteredData] = useState([]);
 
   const [filters, setFilters] = useState({
@@ -37,26 +36,26 @@ export const Filter = () => {
     tvChecked: false,
     showerChecked: false,
   });
-  const handleAcChange = (checked) => {
+  const handleAcChange = checked => {
     setFilters({ ...filters, acChecked: checked });
   };
 
-  const handleAutomaticChange = (checked) => {
+  const handleAutomaticChange = checked => {
     setFilters({ ...filters, automaticChecked: checked });
   };
-  const handlekitchenChecked = (checked) => {
+  const handlekitchenChecked = checked => {
     setFilters({ ...filters, kitchenChecked: checked });
   };
 
-  const handletvChecked = (checked) => {
+  const handletvChecked = checked => {
     setFilters({ ...filters, tvChecked: checked });
   };
 
-  const handleshowerChecked = (checked) => {
+  const handleshowerChecked = checked => {
     setFilters({ ...filters, showerChecked: checked });
   };
 
-  const handleSearch = (e) => {
+  const handleSearch = e => {
     e.preventDefault();
     let Array1 = [];
     let Array2 = [];
@@ -65,38 +64,34 @@ export const Filter = () => {
     let Array5 = [];
     console.log(Array1);
     if (filters.acChecked) {
-      Array1 = totalArrey.filter((auto) => auto.details.airConditioner > 0);
+      Array1 = totalArrey.filter(auto => auto.details.airConditioner > 0);
       console.log(Array1);
     }
     if (filters.automaticChecked) {
-      Array2 = totalArrey.filter((auto) => auto.transmission === 'automatic');
+      Array2 = totalArrey.filter(auto => auto.transmission === 'automatic');
       console.log(Array2);
     }
 
     if (filters.kitchenChecked) {
-      Array3 = totalArrey.filter((auto) => auto.details.kitchen > 0);
+      Array3 = totalArrey.filter(auto => auto.details.kitchen > 0);
       console.log(Array3);
     }
     if (filters.tvChecked) {
-      Array4 = totalArrey.filter((auto) => auto.details.TV > 0);
+      Array4 = totalArrey.filter(auto => auto.details.TV > 0);
       console.log(Array4);
     }
     if (filters.showerChecked) {
-      Array5 = totalArrey.filter((auto) => auto.details.bathroom > 0);
+      Array5 = totalArrey.filter(auto => auto.details.bathroom > 0);
       console.log(Array5);
     }
 
     const commonElements = totalArrey?.filter(
-      (item) =>
-        (!Array1.length ||
-          Array1.some((element) => element._id === item._id)) &&
-        (!Array2.length ||
-          Array2.some((element) => element._id === item._id)) &&
-        (!Array3.length ||
-          Array3.some((element) => element._id === item._id)) &&
-        (!Array4.length ||
-          Array4.some((element) => element._id === item._id)) &&
-        (!Array5.length || Array5.some((element) => element._id === item._id))
+      item =>
+        (!Array1.length || Array1.some(element => element._id === item._id)) &&
+        (!Array2.length || Array2.some(element => element._id === item._id)) &&
+        (!Array3.length || Array3.some(element => element._id === item._id)) &&
+        (!Array4.length || Array4.some(element => element._id === item._id)) &&
+        (!Array5.length || Array5.some(element => element._id === item._id))
     );
     console.log(commonElements);
     setFilteredData(commonElements);
@@ -105,7 +100,7 @@ export const Filter = () => {
   useEffect(() => {
     console.log(filteredData);
     dispatch(newFilterArray(filteredData));
-  }, [filteredData]);
+  }, [dispatch, filteredData]);
   return (
     <>
       <FormContainer>
@@ -124,7 +119,7 @@ export const Filter = () => {
               type="checkbox"
               id="AC"
               checked={filters.acChecked}
-              onChange={(e) => handleAcChange(e.target.checked)}
+              onChange={e => handleAcChange(e.target.checked)}
             ></CheckboxInput>
 
             <svg width="32" height="32">
@@ -141,7 +136,7 @@ export const Filter = () => {
               type="checkbox"
               id="Automatic"
               checked={filters.automaticChecked}
-              onChange={(e) => handleAutomaticChange(e.target.checked)}
+              onChange={e => handleAutomaticChange(e.target.checked)}
             ></CheckboxInput>
             <svg width="32" height="32">
               <use href={`${sprite}#nets`}></use>
@@ -156,7 +151,7 @@ export const Filter = () => {
               type="checkbox"
               id="Kitchen"
               checked={filters.kitchenChecked}
-              onChange={(e) => handlekitchenChecked(e.target.checked)}
+              onChange={e => handlekitchenChecked(e.target.checked)}
             ></CheckboxInput>
             <svg width="32" height="32">
               <use href={`${sprite}#Kitchen`}></use>
@@ -171,7 +166,7 @@ export const Filter = () => {
               type="checkbox"
               id="TV"
               checked={filters.tvChecked}
-              onChange={(e) => handletvChecked(e.target.checked)}
+              onChange={e => handletvChecked(e.target.checked)}
             ></CheckboxInput>
             <svg width="32" height="32">
               <use href={`${sprite}#tel`}></use>
@@ -186,7 +181,7 @@ export const Filter = () => {
               type="checkbox"
               id="Shower/WC"
               checked={filters.showerChecked}
-              onChange={(e) => handleshowerChecked(e.target.checked)}
+              onChange={e => handleshowerChecked(e.target.checked)}
             ></CheckboxInput>
             <svg width="32" height="32">
               <use href={`${sprite}#dusch`}></use>
@@ -204,7 +199,7 @@ export const Filter = () => {
               type="checkbox"
               id="Van"
               checked={vanChecked}
-              onChange={(e) => setVan(e.target.checked)}
+              onChange={e => setVan(e.target.checked)}
             ></CheckboxInput>
             <svg width="32" height="32">
               <use href={`${sprite}#auto`}></use>
@@ -219,7 +214,7 @@ export const Filter = () => {
               type="checkbox"
               id="Fully-Integrated"
               checked={fullyChecked}
-              onChange={(e) => setFully(e.target.checked)}
+              onChange={e => setFully(e.target.checked)}
             ></CheckboxInput>
             <svg width="32" height="32">
               <use href={`${sprite}#autodoor`}></use>
@@ -234,7 +229,7 @@ export const Filter = () => {
               type="checkbox"
               id="Alcove"
               checked={alcoveChecked}
-              onChange={(e) => setAlcove(e.target.checked)}
+              onChange={e => setAlcove(e.target.checked)}
             ></CheckboxInput>
             <svg width="32" height="32">
               <use href={`${sprite}#autofool`}></use>
