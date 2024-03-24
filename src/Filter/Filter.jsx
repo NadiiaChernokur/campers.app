@@ -52,8 +52,6 @@ export const Filter = () => {
   };
 
   const handleSearch = e => {
-    console.log(typeAuto);
-
     e.preventDefault();
     let Array1 = [];
     let Array2 = [];
@@ -61,6 +59,7 @@ export const Filter = () => {
     let Array4 = [];
     let Array5 = [];
     let Array6 = [];
+    let Array7 = [];
 
     if (filters.acChecked) {
       Array1 = totalArrey.filter(auto => auto.details.airConditioner > 0);
@@ -81,7 +80,9 @@ export const Filter = () => {
     if (location.length > 0) {
       const regex = new RegExp(location, 'i');
       Array6 = totalArrey.filter(auto => auto.location.match(regex));
-      console.log(Array6);
+    }
+    if (typeAuto.length > 0) {
+      Array7 = totalArrey.filter(auto => auto.form === typeAuto);
     }
 
     const commonElements = totalArrey?.filter(
@@ -91,14 +92,14 @@ export const Filter = () => {
         (!Array3.length || Array3.some(element => element._id === item._id)) &&
         (!Array4.length || Array4.some(element => element._id === item._id)) &&
         (!Array5.length || Array5.some(element => element._id === item._id)) &&
-        (!Array6.length || Array6.some(element => element._id === item._id))
+        (!Array6.length || Array6.some(element => element._id === item._id)) &&
+        (!Array7.length || Array7.some(element => element._id === item._id))
     );
     console.log(commonElements);
     setFilteredData(commonElements);
   };
 
   useEffect(() => {
-    console.log(filteredData);
     dispatch(newFilterArray(filteredData));
   }, [dispatch, filteredData]);
   return (

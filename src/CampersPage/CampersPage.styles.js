@@ -5,6 +5,7 @@ export const MainContainer = styled.div`
   justify-content: center;
 `;
 export const FlexDiv = styled.div`
+  width: 888px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,4 +16,9 @@ export const CampersButton = styled.button`
   padding: 16px 32px;
   width: 145px;
   height: 56px;
+  margin-bottom: 20px;
+`;
+
+export const FilterContainer = styled.div`
+  width: 360px;
 `;
