@@ -17,18 +17,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { newFilterArray } from '../redux/operation';
 export const Filter = () => {
   const dispatch = useDispatch();
-  // const [acChecked, setAcChecked] = useState(false);
-  // const [automaticChecked, setAutomaticChecked] = useState(false);
-  // const [kitchenChecked, setKitchen] = useState(false);
-  // const [tvChecked, setTv] = useState(false);
-  // const [showerChecked, setShower] = useState(false);
-  const [vanChecked, setVan] = useState(false);
-  const [fullyChecked, setFully] = useState(false);
-  const [alcoveChecked, setAlcove] = useState(false);
 
+  const [typeAuto, setTypeAuto] = useState('');
+  const [location, setLocation] = useState('');
   const totalArrey = useSelector(state => state.totalCampers);
   const [filteredData, setFilteredData] = useState([]);
-
   const [filters, setFilters] = useState({
     acChecked: false,
     automaticChecked: false,
@@ -54,35 +47,41 @@ export const Filter = () => {
   const handleshowerChecked = checked => {
     setFilters({ ...filters, showerChecked: checked });
   };
+  const handleInputChangeLocation = e => {
+    setLocation(e.target.value);
+  };
 
   const handleSearch = e => {
+    console.log(typeAuto);
+
     e.preventDefault();
     let Array1 = [];
     let Array2 = [];
     let Array3 = [];
     let Array4 = [];
     let Array5 = [];
-    console.log(Array1);
+    let Array6 = [];
+
     if (filters.acChecked) {
       Array1 = totalArrey.filter(auto => auto.details.airConditioner > 0);
-      console.log(Array1);
     }
     if (filters.automaticChecked) {
       Array2 = totalArrey.filter(auto => auto.transmission === 'automatic');
-      console.log(Array2);
     }
 
     if (filters.kitchenChecked) {
       Array3 = totalArrey.filter(auto => auto.details.kitchen > 0);
-      console.log(Array3);
     }
     if (filters.tvChecked) {
       Array4 = totalArrey.filter(auto => auto.details.TV > 0);
-      console.log(Array4);
     }
     if (filters.showerChecked) {
       Array5 = totalArrey.filter(auto => auto.details.bathroom > 0);
-      console.log(Array5);
+    }
+    if (location.length > 0) {
+      const regex = new RegExp(location, 'i');
+      Array6 = totalArrey.filter(auto => auto.location.match(regex));
+      console.log(Array6);
     }
 
     const commonElements = totalArrey?.filter(
@@ -91,7 +90,8 @@ export const Filter = () => {
         (!Array2.length || Array2.some(element => element._id === item._id)) &&
         (!Array3.length || Array3.some(element => element._id === item._id)) &&
         (!Array4.length || Array4.some(element => element._id === item._id)) &&
-        (!Array5.length || Array5.some(element => element._id === item._id))
+        (!Array5.length || Array5.some(element => element._id === item._id)) &&
+        (!Array6.length || Array6.some(element => element._id === item._id))
     );
     console.log(commonElements);
     setFilteredData(commonElements);
@@ -106,7 +106,13 @@ export const Filter = () => {
       <FormContainer>
         <LocationDiv>
           <label>Location</label>
-          <LocationInput placeholder="Kyiv, Ukraine"></LocationInput>
+          <LocationInput
+            type="text"
+            id="locationInput"
+            placeholder="Kyiv, Ukraine"
+            value={location}
+            onChange={handleInputChangeLocation}
+          ></LocationInput>
         </LocationDiv>
         <Filters>Filters</Filters>
         <VehicleEquipment>Vehicle equipment</VehicleEquipment>
@@ -192,14 +198,15 @@ export const Filter = () => {
         <Type>Vehicle type</Type>
         <Equipment>
           <CheckboxLabel
-            htmlFor="Van"
-            style={vanChecked ? { border: '1px solid red' } : {}}
+            htmlFor="panelTruck"
+            style={typeAuto === 'panelTruck' ? { border: '1px solid red' } : {}}
           >
             <CheckboxInput
-              type="checkbox"
-              id="Van"
-              checked={vanChecked}
-              onChange={e => setVan(e.target.checked)}
+              type="radio"
+              name="typeAuto"
+              id="panelTruck"
+              checked={typeAuto === 'panelTruck'}
+              onChange={() => setTypeAuto('panelTruck')}
             ></CheckboxInput>
             <svg width="32" height="32">
               <use href={`${sprite}#auto`}></use>
@@ -207,14 +214,17 @@ export const Filter = () => {
             <p>Van</p>
           </CheckboxLabel>
           <CheckboxLabel
-            htmlFor="Fully-Integrated"
-            style={fullyChecked ? { border: '1px solid red' } : {}}
+            htmlFor="fullyIntegrated"
+            style={
+              typeAuto === 'fullyIntegrated' ? { border: '1px solid red' } : {}
+            }
           >
             <CheckboxInput
-              type="checkbox"
-              id="Fully-Integrated"
-              checked={fullyChecked}
-              onChange={e => setFully(e.target.checked)}
+              type="radio"
+              name="typeAuto"
+              id="fullyIntegrated"
+              checked={typeAuto === 'fullyIntegrated'}
+              onChange={() => setTypeAuto('fullyIntegrated')}
             ></CheckboxInput>
             <svg width="32" height="32">
               <use href={`${sprite}#autodoor`}></use>
@@ -223,13 +233,14 @@ export const Filter = () => {
           </CheckboxLabel>
           <CheckboxLabel
             htmlFor="Alcove"
-            style={alcoveChecked ? { border: '1px solid red' } : {}}
+            style={typeAuto === 'Alcove' ? { border: '1px solid red' } : {}}
           >
             <CheckboxInput
-              type="checkbox"
+              type="radio"
+              name="typeAuto"
               id="Alcove"
-              checked={alcoveChecked}
-              onChange={e => setAlcove(e.target.checked)}
+              checked={typeAuto === 'Alcove'}
+              onChange={() => setTypeAuto('Alcove')}
             ></CheckboxInput>
             <svg width="32" height="32">
               <use href={`${sprite}#autofool`}></use>
