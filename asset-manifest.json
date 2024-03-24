@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/campers.app/static/css/main.cd2e038f.css",
-    "main.js": "/campers.app/static/js/main.faee7bad.js",
+    "main.js": "/campers.app/static/js/main.6750c846.js",
     "static/js/374.dd7e5c43.chunk.js": "/campers.app/static/js/374.dd7e5c43.chunk.js",
-    "static/js/746.bf97b977.chunk.js": "/campers.app/static/js/746.bf97b977.chunk.js",
+    "static/js/746.df2d858d.chunk.js": "/campers.app/static/js/746.df2d858d.chunk.js",
     "static/js/583.81bc0936.chunk.js": "/campers.app/static/js/583.81bc0936.chunk.js",
     "static/js/478.44cda86d.chunk.js": "/campers.app/static/js/478.44cda86d.chunk.js",
-    "static/js/770.03c135bc.chunk.js": "/campers.app/static/js/770.03c135bc.chunk.js",
+    "static/js/770.fd856171.chunk.js": "/campers.app/static/js/770.fd856171.chunk.js",
     "static/media/auuuto.svg.png": "/campers.app/static/media/auuuto.svg.bb8ebb46178a9dbe9df4.png",
-    "static/media/svg.svg": "/campers.app/static/media/svg.3b050c771cd90f117717844ad9fee23e.svg",
+    "static/media/svg.svg": "/campers.app/static/media/svg.1fcbc9cfce310a7098b5f139a3a73779.svg",
     "static/media/stock-vector-vector-seamless-pattern-with-outline-cartoon-cars.jpg": "/campers.app/static/media/stock-vector-vector-seamless-pattern-with-outline-cartoon-cars.b54cbca037840dba06e6.jpg",
     "index.html": "/campers.app/index.html",
     "main.cd2e038f.css.map": "/campers.app/static/css/main.cd2e038f.css.map",
-    "main.faee7bad.js.map": "/campers.app/static/js/main.faee7bad.js.map",
+    "main.6750c846.js.map": "/campers.app/static/js/main.6750c846.js.map",
     "374.dd7e5c43.chunk.js.map": "/campers.app/static/js/374.dd7e5c43.chunk.js.map",
-    "746.bf97b977.chunk.js.map": "/campers.app/static/js/746.bf97b977.chunk.js.map",
+    "746.df2d858d.chunk.js.map": "/campers.app/static/js/746.df2d858d.chunk.js.map",
     "583.81bc0936.chunk.js.map": "/campers.app/static/js/583.81bc0936.chunk.js.map",
     "478.44cda86d.chunk.js.map": "/campers.app/static/js/478.44cda86d.chunk.js.map",
-    "770.03c135bc.chunk.js.map": "/campers.app/static/js/770.03c135bc.chunk.js.map"
+    "770.fd856171.chunk.js.map": "/campers.app/static/js/770.fd856171.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cd2e038f.css",
-    "static/js/main.faee7bad.js"
+    "static/js/main.6750c846.js"
   ]
 }
