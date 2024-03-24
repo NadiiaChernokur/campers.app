@@ -100,12 +100,3 @@ const BookForm = () => {
   );
 };
 export default BookForm;
-
-// if (error instanceof Yup.ValidationError) {
-//   const errorMessage = error.errors.join('\n');
-//   Notiflix.Notify.warning('Memento te hominem esse');
-//   console.error('Form validation error:', errorMessage);
-// } else {
-//   Notiflix.Notify.failure('Qui timide rogat docet negare');
-//   console.error('Form submission error:', error);
-// }
