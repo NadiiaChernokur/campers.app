@@ -9,6 +9,7 @@ import {
 } from './CampersPage.styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { emptyArray, getCampers, totalCampers } from '../redux/operation';
+import { Loader } from 'Loader';
 
 const CampersPage = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,8 @@ const CampersPage = () => {
   const totalArrey = useSelector(state => state.totalCampers);
   const campersArrey = useSelector(state => state.campersArray);
   const newFilterArray = useSelector(state => state.newFilterArray);
-  console.log(newFilterArray.length);
+  const isLoad = useSelector(state => state.isLoading);
+
   const LoadMore = () => {
     if (campersArrey.length + 4 >= totalArrey.length) {
       setbuttonDisable(true);
@@ -63,7 +65,8 @@ const CampersPage = () => {
           <Filter />
         </FilterContainer>
         <FlexDiv>
-          <AutoCard page={page} />
+          {isLoad ? <Loader /> : <AutoCard page={page} />}
+
           {buttonDisable ? (
             <CampersButton onClick={LoadMore} style={{ display: 'none' }}>
               Load more

@@ -19,10 +19,10 @@ const initialState = {
   errorTotal: null,
 };
 
-const handlePending = (state) => {
+const handlePending = state => {
   state.isLoading = true;
 };
-const handlePendingTotal = (state) => {
+const handlePendingTotal = state => {
   state.isLoadingTotal = true;
 };
 
@@ -50,14 +50,11 @@ const handleTotalCampers = (state, action) => {
   state.totalCampers = action.payload;
 };
 const newFilterArrayCreate = (state, action) => {
-  console.log(action.payload);
   state.newFilterArray = action.payload;
 };
 const addFavoriteArrayFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  console.log(action.payload);
-
   state.favoriteArray.push(action.payload);
 };
 const removeFavoriteArrayFulfilled = (state, action) => {
@@ -65,14 +62,14 @@ const removeFavoriteArrayFulfilled = (state, action) => {
   state.error = null;
 
   state.favoriteArray = state.favoriteArray.filter(
-    (auto) => auto._id !== action.payload
+    auto => auto._id !== action.payload
   );
 };
 
 const autoSlice = createSlice({
   name: 'autos',
   initialState: initialState,
-  extraReducers: (builder) =>
+  extraReducers: builder =>
     builder
       .addCase(getCampers.pending, handlePending)
       .addCase(getCampers.fulfilled, handleGetInformationFulfilled)
@@ -86,10 +83,6 @@ const autoSlice = createSlice({
       .addCase(removeFavoriteItem().type, removeFavoriteArrayFulfilled)
       .addCase(emptyArray().type, removeArray)
       .addCase(newFilterArray().type, newFilterArrayCreate),
-
-  // .addCase(removeFavorite.pending, handlePending)
-  // .addCase(removeFavorite.fulfilled, removeFavoriteArrayFulfilled)
-  // .addCase(removeFavorite.rejected, handleRejected),
 });
 
 export const autoReducer = autoSlice.reducer;

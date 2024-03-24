@@ -28,11 +28,10 @@ export const AutoCard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAuto, setSelectedAuto] = useState(null);
   const [favorites, setFavorites] = useState([]);
-  const campersArray = useSelector((state) => state.campersArray);
-  const newFilterArray = useSelector((state) => state.newFilterArray);
+  const campersArray = useSelector(state => state.campersArray);
+  const newFilterArray = useSelector(state => state.newFilterArray);
 
-  console.log(newFilterArray);
-  const showMore = (auto) => {
+  const showMore = auto => {
     setSelectedAuto(auto);
     setIsModalOpen(true);
   };
@@ -43,7 +42,7 @@ export const AutoCard = () => {
     setFavorites(storedFavorites);
   }, []);
 
-  const addToFavirite = (id) => {
+  const addToFavirite = id => {
     const updatedFavorites = [...favorites];
     const index = updatedFavorites.indexOf(id);
     if (index !== -1) {
@@ -57,7 +56,7 @@ export const AutoCard = () => {
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
 
-  const firstLetter = (w) => {
+  const firstLetter = w => {
     if (w) {
       return w.charAt(0).toUpperCase() + w.slice(1);
     }
@@ -65,11 +64,11 @@ export const AutoCard = () => {
   const onClose = () => {
     return setIsModalOpen(false);
   };
-  const isFavorite = (id) => favorites.includes(id);
+  const isFavorite = id => favorites.includes(id);
   return (
     <>
       {(newFilterArray.length > 0 ? newFilterArray : campersArray)?.map(
-        (auto) => (
+        auto => (
           <CardContainer key={auto._id}>
             <CardImgContainer>
               <CardImg src={auto.gallery?.[0]} alt={auto.name} />

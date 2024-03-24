@@ -95,7 +95,7 @@ export const Filter = () => {
         (!Array6.length || Array6.some(element => element._id === item._id)) &&
         (!Array7.length || Array7.some(element => element._id === item._id))
     );
-    console.log(commonElements);
+
     setFilteredData(commonElements);
   };
 
@@ -256,98 +256,3 @@ export const Filter = () => {
     </>
   );
 };
-
-// const Search = (e) => {
-//   e.preventDefault();
-//   let Array1 = [];
-//   let Array2 = [];
-//   let Array3 = [];
-//   let Array4 = [];
-//   let Array5 = [];
-
-//   if (acChecked) {
-//     Array1 = campersArrey.filter((auto) => auto.details.airConditioner > 0);
-//   }
-//   if (automaticChecked) {
-//     Array2 = campersArrey.filter((auto) => auto.transmission === 'automatic');
-//   }
-
-//   if (kitchenChecked) {
-//     Array3 = campersArrey.filter((auto) => auto.details.kitchen > 0);
-//   }
-//   if (tvChecked) {
-//     Array4 = campersArrey.filter((auto) => auto.details.TV > 0);
-//   }
-//   if (showerChecked) {
-//     Array5 = campersArrey.filter((auto) => auto.details.bathroom > 0);
-//   }
-//   console.log(Array3);
-//   let commonElements = Array1.filter(
-//     (item) =>
-//       Array2.some((element) => element._id === item._id) &&
-//       Array3.some((element) => element._id === item._id) &&
-//       Array4.some((element) => element._id === item._id) &&
-//       Array5.some((element) => element._id === item._id)
-//   );
-//   setFilterArray(commonElements);
-//   console.log(commonElements);
-// };
-
-// let Array1 = [];
-// let Array2 = [];
-// let Array3 = [];
-// let Array4 = [];
-// let Array5 = [];
-
-// if (filters.acChecked) {
-//   Array1 = campersArrey.filter((auto) => auto.details.airConditioner > 0);
-// }
-// if (filters.automaticChecked) {
-//   Array2 = campersArrey.filter((auto) => auto.transmission === 'automatic');
-// }
-
-// if (filters.kitchenChecked) {
-//   Array3 = campersArrey.filter((auto) => auto.details.kitchen > 0);
-// }
-// if (filters.tvChecked) {
-//   Array4 = campersArrey.filter((auto) => auto.details.TV > 0);
-// }
-// if (filters.showerChecked) {
-//   Array5 = campersArrey.filter((auto) => auto.details.bathroom > 0);
-// }
-
-// let commonElements = Array1?.filter(
-//   (item) =>
-//     (!Array2 ? [] : Array2.some((element) => element._id === item._id)) &&
-//     (!Array3 ? [] : Array3.some((element) => element._id === item._id)) &&
-//     (!Array4 ? [] : Array4.some((element) => element._id === item._id)) &&
-//     (!Array5 ? [] : Array5.some((element) => element._id === item._id))
-// );
-
-// if (filters.acChecked) {
-//   const acArray = campersArrey.filter(
-//     (auto) => auto.details.airConditioner > 0
-//   );
-//   filteredArray = filteredArray.concat(acArray);
-// }
-// if (filters.automaticChecked) {
-//   const acArray = campersArrey.filter(
-//     (auto) => auto.transmission === 'automatic'
-//   );
-//   filteredArray = filteredArray.concat(acArray);
-// }
-
-// if (filters.kitchenChecked) {
-//   const acArray = campersArrey.filter((auto) => auto.details.kitchen > 0);
-//   filteredArray = filteredArray.concat(acArray);
-// }
-// if (filters.tvChecked) {
-//   const acArray = campersArrey.filter((auto) => auto.details.TV > 0);
-//   filteredArray = filteredArray.concat(acArray);
-// }
-// if (filters.showerChecked) {
-//   const acArray = campersArrey.filter((auto) => auto.details.bathroom > 0);
-//   filteredArray = filteredArray.concat(acArray);
-// }
-
-// console.log(filteredArray);

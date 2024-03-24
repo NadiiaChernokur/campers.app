@@ -9,19 +9,18 @@ import {
 } from './Features.styles';
 import sprite from '../img/svg.svg';
 const Features = ({ auto }) => {
-  console.log(auto);
-  const firstLetter = (w) => {
+  const firstLetter = w => {
     if (w) {
       return w.charAt(0).toUpperCase() + w.slice(1);
     }
   };
-  const splitFunction = (v) => {
+  const splitFunction = v => {
     const parts = v.split('m');
     const formatted = parts[0] + ' m';
     return formatted;
   };
 
-  const tankFunction = (v) => {
+  const tankFunction = v => {
     const parts = v.split('l');
     const formatted = parts[0] + ' l';
     return formatted;

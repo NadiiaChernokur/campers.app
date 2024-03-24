@@ -70,11 +70,6 @@ export const Description = styled.p`
   margin-bottom: 24px;
   font-weight: 400;
   font-size: 16px;
-  /* display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-
-  overflow-wrap: break-word; */
 `;
 export const List = styled.li`
   display: flex;
@@ -127,5 +122,4 @@ export const UseHart = styled.use`
   background: aqua;
   background-color: aqua;
   fill: aqua;
-  /* filter: blur(aqua);  */
 `;

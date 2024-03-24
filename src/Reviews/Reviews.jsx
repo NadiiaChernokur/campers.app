@@ -15,7 +15,6 @@ import {
 } from './Reviews.styles';
 
 const Reviews = ({ auto }) => {
-  console.log(auto);
   return (
     <ReviewsContainer>
       {auto.reviews?.map((rev, index) => (
